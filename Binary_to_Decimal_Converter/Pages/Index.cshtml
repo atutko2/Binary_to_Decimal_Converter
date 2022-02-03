@@ -6,15 +6,17 @@
 }
 
 <div class="text-center" runat="server">
-    <h1 class="display-4">Binary to Decimal Converter</h1>
+    <h1 class="display-4">@Model.ConvertFrom to @Model.ConvertTo Converter</h1>
     <h3>(No Overflow)</h3>
 
-    <form method="post" class="card p-3" runat="server">
-
-        <select asp-for="ConvertFrom">
+    <form asp-page-handler="select"  method="post" >
+        <select asp-for="ConvertFrom" onchange="this.form.submit()">
             <option asp-for="ConvertFrom">Binary</option>
             <option asp-for="ConvertFrom">Decimal</option>
         </select>
+    </form>
+
+    <form method="post" class="card p-3" runat="server">
 
         <input asp-for="NewConverter.ValueToConvert"  class="card p-3" style="text-align:right" />
         <div class="row">

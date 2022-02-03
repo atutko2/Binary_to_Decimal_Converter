@@ -22,11 +22,14 @@ namespace Binary_to_Decimal_Converter.Pages
         [BindProperty]
         public string ConvertFrom { get; set; }
 
+        public string ConvertTo { get; set; }
+
         public IndexModel(ILogger<IndexModel> logger)
         {
             _logger = logger;
             NewConverter = new Converter();
             ConvertFrom = "Binary";
+            ConvertTo = "Decimal";
         }
 
         public void OnGet()
@@ -34,36 +37,28 @@ namespace Binary_to_Decimal_Converter.Pages
 
         }
 
-        public IActionResult OnPost()
+        public IActionResult OnPostSelect()
+        {
+            if (ConvertFrom == "Binary")
+                ConvertTo = "Decimal";
+            else
+                ConvertTo = "Binary";
+
+            return Page();
+        }
+
+            public IActionResult OnPost()
         {
 
 
             if (ConvertFrom == "Binary")
             {
-
-                for (int i = 0; i < NewConverter.ValueToConvert.Length; i++)
-                {
-                    // check the input to make sure it is just binary
-                    if (NewConverter.ValueToConvert[i] != '0' && NewConverter.ValueToConvert[i] != '1')
-                    {
-                        ModelState.AddModelError("ValueToConvert", "Value must only contain binary digits.");
-                        break;
-                    }
-                }
-
+                ErrorCheck(1);
                 NewConverter.convert(1);
             }
             else
             {
-                for (int i = 0; i < NewConverter.ValueToConvert.Length; i++)
-                {
-                    // check the input to make sure it is just binary
-                    if (NewConverter.ValueToConvert[i] < '0' || NewConverter.ValueToConvert[i] > '9')
-                    {
-                        ModelState.AddModelError("ValueToConvert", "Value must only contain numbers.");
-                        break;
-                    }
-                }
+                ErrorCheck(2);
                 NewConverter.convert(2);
             }
 
@@ -82,6 +77,37 @@ namespace Binary_to_Decimal_Converter.Pages
             }
 
             return Page();
+        }
+
+        public void ErrorCheck( int type)
+        {
+
+            // if the conversion is from binary
+            if (type == 1)
+            {
+                for (int i = 0; i < NewConverter.ValueToConvert.Length; i++)
+                {
+                    // check the input to make sure it is just binary
+                    if (NewConverter.ValueToConvert[i] != '0' && NewConverter.ValueToConvert[i] != '1')
+                    {
+                        ModelState.AddModelError("ValueToConvert", "Value must only contain binary digits.");
+                        break;
+                    }
+                }
+            }
+            // if the conversion is from decimal
+            else
+            {
+                for (int i = 0; i < NewConverter.ValueToConvert.Length; i++)
+                {
+                    // check the input to make sure it is just numbers
+                    if (NewConverter.ValueToConvert[i] < '0' || NewConverter.ValueToConvert[i] > '9')
+                    {
+                        ModelState.AddModelError("ValueToConvert", "Value must only contain numbers.");
+                        break;
+                    }
+                }
+            }
         }
 
     }

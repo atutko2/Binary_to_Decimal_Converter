@@ -40,7 +40,6 @@ namespace Binary_to_Decimal_Converter.Models
             {
                 List<int> bin = new List<int>();
                 BigInteger val = BigInteger.Parse(ValueToConvert);
-                
 
                 while (val > 0)
                 {
