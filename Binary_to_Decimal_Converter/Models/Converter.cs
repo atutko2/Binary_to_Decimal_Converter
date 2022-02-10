@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
+using Binary_to_Decimal_Converter.Services;
 
 namespace Binary_to_Decimal_Converter.Models
 {
@@ -12,16 +13,15 @@ namespace Binary_to_Decimal_Converter.Models
     {
         public Converter()
         {
-            this.ReturnVal = "";
         }
 
         [BindProperty]
         public string ValueToConvert { get; set; }
 
-        public string ReturnVal { get; set; }
-
         internal void convert( int convertType )
         {
+
+            ConverterService.SetConversionVal(ValueToConvert);
 
             if (convertType == 1)
             {
@@ -34,7 +34,7 @@ namespace Binary_to_Decimal_Converter.Models
                         conversion++;
                 }
 
-                ReturnVal = conversion.ToString();
+                ConverterService.SetConvertedVal(conversion.ToString());
             }
             else
             {
@@ -53,8 +53,8 @@ namespace Binary_to_Decimal_Converter.Models
                 {
                    builder.Append(num);
                 }
-                
-                ReturnVal = builder.ToString();
+
+                ConverterService.SetConvertedVal(builder.ToString());
             }
         }
 

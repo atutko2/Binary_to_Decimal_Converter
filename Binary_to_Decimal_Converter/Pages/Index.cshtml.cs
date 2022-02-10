@@ -6,8 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using Binary_to_Decimal_Converter.Models;
-
-
+using Binary_to_Decimal_Converter.Services;
 
 
 namespace Binary_to_Decimal_Converter.Pages
@@ -22,53 +21,76 @@ namespace Binary_to_Decimal_Converter.Pages
         [BindProperty]
         public string ConvertFrom { get; set; }
 
+        [BindProperty]
         public string ConvertTo { get; set; }
+
+        public string HeaderFrom { get; set; }
+
+        public string HeaderTo { get; set; }
+
+        public string ReturnVal { get; set; }
 
         public IndexModel(ILogger<IndexModel> logger)
         {
+            
             _logger = logger;
             NewConverter = new Converter();
-            ConvertFrom = "Binary";
-            ConvertTo = "Decimal";
+
         }
 
-        public void OnGet()
+        public IActionResult OnGet()
         {
+            ConvertFrom = ConverterService.GetConversionFrom();
+            ConvertTo = ConverterService.GetConversionTo();
+            HeaderFrom = ConverterService.GetHeaderFrom();
+            HeaderTo = ConverterService.GetHeaderTo();
+            ReturnVal = ConverterService.GetConvertedVal();
+            NewConverter.ValueToConvert = ConverterService.GetConversionVal();
+            return Page();
+        }
 
+        public void OnPost()
+        {
+            Console.WriteLine("In Post");
         }
 
         public IActionResult OnPostSelect()
         {
-            if (ConvertFrom == "Binary")
-                ConvertTo = "Decimal";
-            else
-                ConvertTo = "Binary";
+            
+            ConverterService.SetConversion(ConvertFrom, ConvertTo);
 
-            return Page();
+            if (ConvertFrom != ConvertTo)
+                ConverterService.SetHeader(ConvertFrom, ConvertTo);
+
+            return RedirectToAction("Get");
         }
 
-            public IActionResult OnPost()
+        public IActionResult OnPostConvert( string type )
         {
+            Console.WriteLine("In Convert");
 
-
-            if (ConvertFrom == "Binary")
+            Console.WriteLine(type);
+            if (type == "Binary")
             {
                 ErrorCheck(1);
-                NewConverter.convert(1);
             }
-            else
+            else if( ConverterService.GetConversionFrom() == "Decimal")
             {
                 ErrorCheck(2);
-                NewConverter.convert(2);
+
             }
 
 
             // if any of the input was bad, return the page with the errors
             if (!ModelState.IsValid)
             {
-                return Page();
+                return RedirectToAction("Get");
             }
 
+            if(type == "Binary")
+                NewConverter.convert(1);
+            else
+                NewConverter.convert(2);
 
             // if the page is valid, clear any previous errors that may have been set
             foreach (var modelValue in ModelState.Values)
@@ -76,7 +98,13 @@ namespace Binary_to_Decimal_Converter.Pages
                 modelValue.Errors.Clear();
             }
 
-            return Page();
+            
+            if (type == "Binary")
+                ConvertTo = "Decimal";
+            else
+                ConvertTo = "Binary";
+
+            return RedirectToAction("Get");
         }
 
         public void ErrorCheck( int type)

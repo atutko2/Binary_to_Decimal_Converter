@@ -348,3 +348,4 @@
 /Users/atutko/Projects/Binary_to_Decimal_Converter/Binary_to_Decimal_Converter/obj/Debug/netcoreapp3.1/Binary_to_Decimal_Converter.dll
 /Users/atutko/Projects/Binary_to_Decimal_Converter/Binary_to_Decimal_Converter/obj/Debug/netcoreapp3.1/Binary_to_Decimal_Converter.pdb
 /Users/atutko/Projects/Binary_to_Decimal_Converter/Binary_to_Decimal_Converter/obj/Debug/netcoreapp3.1/Binary_to_Decimal_Converter.genruntimeconfig.cache
+/Users/atutko/Projects/Binary_to_Decimal_Converter/Binary_to_Decimal_Converter/obj/Debug/netcoreapp3.1/Binary_to_Decimal_Converter.csproj.AssemblyReference.cache

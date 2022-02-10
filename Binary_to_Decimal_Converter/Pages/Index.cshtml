@@ -5,24 +5,36 @@
 
 }
 
+@if( Model.ConvertFrom == null)
+{
+    Model.ConvertFrom = "Binary";
+    Model.ConvertTo = "Decimal";
+    Model.HeaderFrom = "Binary";
+    Model.HeaderTo = "Decimal";
+}
+
 <div class="text-center" runat="server">
-    <h1 class="display-4">@Model.ConvertFrom to @Model.ConvertTo Converter</h1>
+    <h1 class="display-4">@Model.HeaderFrom to @Model.HeaderTo Converter</h1>
     <h3>(No Overflow)</h3>
 
-    <form asp-page-handler="select"  method="post" >
+    <form asp-page-handler="select" method="post">
         <select asp-for="ConvertFrom" onchange="this.form.submit()">
             <option asp-for="ConvertFrom">Binary</option>
             <option asp-for="ConvertFrom">Decimal</option>
         </select>
+        <select asp-for="ConvertTo" onchange="this.form.submit()">
+            <option asp-for="ConvertTo">Binary</option>
+            <option asp-for="ConvertTo">Decimal</option>
+        </select>
     </form>
 
-    <form method="post" class="card p-3" runat="server">
+    <form asp-page-handler="convert" asp-route-type="@Model.ConvertFrom" method="post" class="card p-3" >
 
         <input asp-for="NewConverter.ValueToConvert"  class="card p-3" style="text-align:right" />
         <div class="row">
             <div asp-validation-summary="All" class="text-danger" style="text-align:right"></div>
         </div>
-        <input type="text" class="card p-3" style="text-align:right" value="@Model.NewConverter.ReturnVal" />
+        <input type="text" class="card p-3" style="text-align:right" value="@Model.ReturnVal" />
         <br />
         <div>
             <button class="btn btn-primary">CONVERT</button>
