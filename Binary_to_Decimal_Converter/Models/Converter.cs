@@ -18,43 +18,74 @@ namespace Binary_to_Decimal_Converter.Models
         [BindProperty]
         public string ValueToConvert { get; set; }
 
-        internal void convert( int convertType )
+        internal void convert()
         {
 
             ConverterService.SetConversionVal(ValueToConvert);
 
-            if (convertType == 1)
+            // if the value being converted is binary
+            if ( ConverterService.GetConversionFrom() == "Binary")
             {
                 BigInteger conversion = new BigInteger(0);
-
-                for (int i = 0; i < ValueToConvert.Length; i++)
+                // if the binary is being converted to decimal
+                if (ConverterService.GetConversionTo() == "Decimal")
                 {
-                    conversion *= 2;
-                    if (ValueToConvert[i] == '1')
-                        conversion++;
+                    for (int i = 0; i < ValueToConvert.Length; i++)
+                    {
+                        conversion *= 2;
+                        if (ValueToConvert[i] == '1')
+                            conversion++;
+                    }
                 }
 
                 ConverterService.SetConvertedVal(conversion.ToString());
             }
-            else
+            // if the value being converted is decimal
+            else if( ConverterService.GetConversionFrom() == "Decimal" )
             {
-                List<int> bin = new List<int>();
+                StringBuilder builder = new StringBuilder();
                 BigInteger val = BigInteger.Parse(ValueToConvert);
 
-                while (val > 0)
+                if(val == 0)
                 {
-                    bin.Insert(0, (int)(val % 2));
-                    val /= 2;
+                    ConverterService.SetConvertedVal("0");
+                    return;
                 }
-
-                StringBuilder builder = new StringBuilder();
-                
-                foreach (int num in bin)
+                // if the decimal is being converted to binary
+                if (ConverterService.GetConversionTo() == "Binary")
                 {
-                   builder.Append(num);
+                    List<int> bin = new List<int>();
+                    
+                    while (val > 0)
+                    {
+                        bin.Insert(0, (int)(val % 2));
+                        val /= 2;
+                    }
+
+                    foreach (int num in bin)
+                    {
+                        builder.Append(num);
+                    }
+                }
+                else if( ConverterService.GetConversionTo() == "Hexadecimal")
+                {
+                    List<char> hex = new List<char>();
+
+                    while (val > 0)
+                    {
+                        hex.Insert(0, ConverterService.GetHexVal( (int)(val % 16)) );
+                        val /= 16;
+
+                    }
+
+                    foreach (char character in hex)
+                    {
+                        builder.Append(character);
+                    }
                 }
 
                 ConverterService.SetConvertedVal(builder.ToString());
+                
             }
         }
 

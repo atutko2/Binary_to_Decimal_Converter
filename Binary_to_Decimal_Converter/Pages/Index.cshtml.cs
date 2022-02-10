@@ -67,30 +67,21 @@ namespace Binary_to_Decimal_Converter.Pages
 
         public IActionResult OnPostConvert( string type )
         {
-            Console.WriteLine("In Convert");
 
-            Console.WriteLine(type);
-            if (type == "Binary")
-            {
-                ErrorCheck(1);
-            }
-            else if( ConverterService.GetConversionFrom() == "Decimal")
-            {
-                ErrorCheck(2);
-
-            }
-
+            ErrorCheck();
 
             // if any of the input was bad, return the page with the errors
             if (!ModelState.IsValid)
             {
-                return RedirectToAction("Get");
+                ConvertFrom = ConverterService.GetConversionFrom();
+                ConvertTo = ConverterService.GetConversionTo();
+                HeaderFrom = ConverterService.GetHeaderFrom();
+                HeaderTo = ConverterService.GetHeaderTo();
+                return Page();
             }
 
-            if(type == "Binary")
-                NewConverter.convert(1);
-            else
-                NewConverter.convert(2);
+            
+            NewConverter.convert();
 
             // if the page is valid, clear any previous errors that may have been set
             foreach (var modelValue in ModelState.Values)
@@ -107,11 +98,11 @@ namespace Binary_to_Decimal_Converter.Pages
             return RedirectToAction("Get");
         }
 
-        public void ErrorCheck( int type)
+        public void ErrorCheck()
         {
 
             // if the conversion is from binary
-            if (type == 1)
+            if (ConverterService.GetConversionFrom() == "Binary")
             {
                 for (int i = 0; i < NewConverter.ValueToConvert.Length; i++)
                 {
