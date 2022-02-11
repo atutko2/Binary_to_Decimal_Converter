@@ -90,10 +90,10 @@ namespace Binary_to_Decimal_Converter.Pages
             }
 
             
-            if (type == "Binary")
-                ConvertTo = "Decimal";
-            else
-                ConvertTo = "Binary";
+            //if (type == "Binary")
+            //    ConvertTo = "Decimal";
+            //else
+            //    ConvertTo = "Binary";
 
             return RedirectToAction("Get");
         }
@@ -120,7 +120,7 @@ namespace Binary_to_Decimal_Converter.Pages
                 }
             }
             // if the conversion is from decimal
-            else
+            else if(ConverterService.GetConversionFrom() == "Decimal")
             {
                 for (int i = 0; i < NewConverter.ValueToConvert.Length; i++)
                 {
@@ -128,6 +128,18 @@ namespace Binary_to_Decimal_Converter.Pages
                     if (NewConverter.ValueToConvert[i] < '0' || NewConverter.ValueToConvert[i] > '9')
                     {
                         ModelState.AddModelError("ValueToConvert", "Value must only contain numbers.");
+                        break;
+                    }
+                }
+            }
+            else if (ConverterService.GetConversionFrom() == "Hexadecimal")
+            {
+                for (int i = 0; i < NewConverter.ValueToConvert.Length; i++)
+                {
+                    // check the input to make sure it is just hex digits
+                    if ( !(NewConverter.ValueToConvert[i] >= '0' && NewConverter.ValueToConvert[i] <= '9') && !(NewConverter.ValueToConvert[i] >= 'a' && NewConverter.ValueToConvert[i] <= 'f'))
+                    {
+                        ModelState.AddModelError("ValueToConvert", "Value must only contain hex digits.");
                         break;
                     }
                 }

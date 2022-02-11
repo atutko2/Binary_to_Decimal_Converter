@@ -27,6 +27,7 @@ namespace Binary_to_Decimal_Converter.Models
             if ( ConverterService.GetConversionFrom() == "Binary")
             {
 
+
                 // if the binary is being converted to decimal
                 if (ConverterService.GetConversionTo() == "Decimal")
                 {
@@ -49,11 +50,11 @@ namespace Binary_to_Decimal_Converter.Models
                     int counter = 0;
 
 
+                    // remove leading 0s
                     while(counter < val.Length && val[counter] == '0')
                     {
                         counter++;
                     }
-
                     val.Remove(0, counter);
 
                     if (val.Length == 0)
@@ -87,11 +88,14 @@ namespace Binary_to_Decimal_Converter.Models
 
                     ConverterService.SetConvertedVal(builder.ToString());
                 }
+
                 
             }
             // if the value being converted is decimal
             else if( ConverterService.GetConversionFrom() == "Decimal" )
             {
+
+
                 StringBuilder builder = new StringBuilder();
                 BigInteger val = BigInteger.Parse(ValueToConvert);
 
@@ -139,7 +143,37 @@ namespace Binary_to_Decimal_Converter.Models
                 }
 
                 ConverterService.SetConvertedVal(builder.ToString());
-                
+
+
+            }
+            else if(ConverterService.GetConversionFrom() == "Hexadecimal")
+            {
+
+                StringBuilder val = new StringBuilder(ValueToConvert);
+                int counter = 0;
+
+                // remove leading 0s
+                while (counter < val.Length && val[counter] == '0')
+                {
+                    counter++;
+                }
+                val.Remove(0, counter);
+
+                if (val.Length == 0)
+                    val.Append('0');
+
+                if (ConverterService.GetConversionTo() == "Decimal")
+                {
+                    BigInteger conversion = new BigInteger(0);
+
+                    for( int i = 0; i < val.Length; i++)
+                    {
+                        // multiply the value by 16 raised to the current power and add it to the running total
+                        conversion += ConverterService.GetDecVal(val[i]) * (BigInteger) Math.Pow(16, i);
+                    }
+
+                    ConverterService.SetConvertedVal(conversion.ToString());
+                }
             }
         }
 
