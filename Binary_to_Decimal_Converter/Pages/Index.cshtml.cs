@@ -100,6 +100,11 @@ namespace Binary_to_Decimal_Converter.Pages
 
         public void ErrorCheck()
         {
+            if (NewConverter.ValueToConvert == null || NewConverter.ValueToConvert.Length <= 0)
+            {
+                ModelState.AddModelError("ValueToConvert", "");
+                return;
+            }
 
             // if the conversion is from binary
             if (ConverterService.GetConversionFrom() == "Binary")

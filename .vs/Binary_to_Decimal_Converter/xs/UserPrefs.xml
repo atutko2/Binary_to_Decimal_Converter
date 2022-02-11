@@ -4,16 +4,18 @@
     <Files>
       <File FileName="Binary_to_Decimal_Converter/Pages/Index.cshtml" Line="28" Column="52" />
       <File FileName="Binary_to_Decimal_Converter/Pages/Shared/_Layout.cshtml" Line="40" Column="27" />
-      <File FileName="Binary_to_Decimal_Converter/Pages/Index.cshtml.cs" Line="84" Column="34" />
-      <File FileName="Binary_to_Decimal_Converter/Models/Converter.cs" Line="54" Column="63" />
-      <File FileName="Binary_to_Decimal_Converter/Services/ConverterService.cs" Line="15" Column="87" />
+      <File FileName="Binary_to_Decimal_Converter/Pages/Index.cshtml.cs" Line="103" Column="17" />
+      <File FileName="Binary_to_Decimal_Converter/Models/Converter.cs" Line="75" Column="38" />
+      <File FileName="Binary_to_Decimal_Converter/Services/ConverterService.cs" Line="92" Column="34" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Binary_to_Decimal_Converter" expanded="True">
-            <Node name="Binary_to_Decimal_Converter" expanded="True" selected="True">
-              <Node name="Models" expanded="True" />
+            <Node name="Binary_to_Decimal_Converter" expanded="True">
+              <Node name="Models" expanded="True">
+                <Node name="Converter.cs" selected="True" />
+              </Node>
               <Node name="Pages" expanded="True">
                 <Node name="Shared" expanded="True" />
                 <Node name="Index.cshtml" expanded="True" />
