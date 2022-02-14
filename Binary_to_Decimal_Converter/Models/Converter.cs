@@ -1,4 +1,11 @@
-﻿using System;
+﻿/*
+ * Author: Adam Tutko
+ * Date: 02/14/2022
+ * Description: Takes value from an online service and converts to another base (e.g. Decimal to Binary)
+ */
+
+
+using System;
 using System.Numerics;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
@@ -15,12 +22,16 @@ namespace Binary_to_Decimal_Converter.Models
         {
         }
 
+        // sets the value being converted and binds it to the razor page input
         [BindProperty]
         public string ValueToConvert { get; set; }
 
+
+        // converts the value to convert to the desired base
         internal void convert()
         {
 
+            // saves the conversion value for later use
             ConverterService.SetConversionVal(ValueToConvert);
 
             // if the value being converted is binary
@@ -165,14 +176,27 @@ namespace Binary_to_Decimal_Converter.Models
                 if (ConverterService.GetConversionTo() == "Decimal")
                 {
                     BigInteger conversion = new BigInteger(0);
+                    int powerVal = 0;
 
-                    for( int i = 0; i < val.Length; i++)
+                    for( int i = val.Length-1; i >= 0; i--)
                     {
                         // multiply the value by 16 raised to the current power and add it to the running total
-                        conversion += ConverterService.GetDecVal(val[i]) * (BigInteger) Math.Pow(16, i);
+                        conversion += ConverterService.GetDecVal(val[i]) * (BigInteger) Math.Pow(16, powerVal);
+                        powerVal++;
                     }
 
                     ConverterService.SetConvertedVal(conversion.ToString());
+                }
+                if(ConverterService.GetConversionTo() == "Binary")
+                {
+                    string conversion = "";
+                    for (int i = 0; i < val.Length; i++)
+                    {
+                        // multiply the value by 16 raised to the current power and add it to the running total
+                        conversion += ConverterService.GetBinVal(val[i]);
+                    }
+
+                    ConverterService.SetConvertedVal(conversion);
                 }
             }
         }
