@@ -13,42 +13,52 @@
     Model.HeaderTo = "Decimal";
 }
 
-<div class="text-center" runat="server">
-    <h1>Base Converter</h1>
-    <h3>(No Overflow)</h3>
-    <br />
-    <h3>@Model.HeaderFrom to @Model.HeaderTo Converter</h3>
-    <br />
-    <form asp-page-handler="select" method="post">
-        <div class="d-flex flex-row justify-content-center">
-            <label class="p-2">From</label>
-            <select asp-for="ConvertFrom" onchange="this.form.submit()" class="custom-select p-20 w-25">
-                <option asp-for="ConvertFrom">Binary</option>
-                <option asp-for="ConvertFrom">Decimal</option>
-                <option asp-for="ConvertFrom">Hexadecimal</option>
-            </select>
-        
-            <label class="p-2">To</label>
-            <select asp-for="ConvertTo" onchange="this.form.submit()" class="custom-select p-20 w-25">
-                <option asp-for="ConvertTo">Binary</option>
-                <option asp-for="ConvertTo">Decimal</option>
-                <option asp-for="ConvertTo">Hexadecimal</option>
-            </select>
+<div class="text-center" style="background-color:#e3e3e3" runat="server">
+    <div class="card p-3" style="background-color:#f6f6f8">
+        <div class="card-title">
+            <h1>Base Converter</h1>
         </div>
-    </form>
-
-<form asp-page-handler="convert" method="post" class="card p-3">
-
-    <input asp-for="NewConverter.ValueToConvert" class="card p-3" style="text-align:right" />
-    <div class="row">
-        <div asp-validation-summary="All" class="text-danger" style="text-align:right"></div>
-    </div>
-    <input type="text" class="card p-3" style="text-align:right" value="@Model.ReturnVal" />
-    <br />
-    <div>
-        <button class="btn btn-primary">CONVERT</button>
+        <div class="card-subtitle">
+            <h3>(No Overflow)</h3>
+        </div>
     </div>
     <br />
-</form>
 
+    <div class="card p-3" style="background-color:#f6f6f8">
+        <h3>@Model.HeaderFrom to @Model.HeaderTo Converter</h3>
+
+        <form asp-page-handler="select" method="post">
+            <div class="d-flex flex-row justify-content-center">
+                <label class="p-2">From</label>
+                <select asp-for="ConvertFrom" onchange="this.form.submit()" class="custom-select p-20 w-25">
+                    <option asp-for="ConvertFrom">Binary</option>
+                    <option asp-for="ConvertFrom">Decimal</option>
+                    <option asp-for="ConvertFrom">Hexadecimal</option>
+                </select>
+
+                <label class="p-2">To</label>
+                <select asp-for="ConvertTo" onchange="this.form.submit()" class="custom-select p-20 w-25">
+                    <option asp-for="ConvertTo">Binary</option>
+                    <option asp-for="ConvertTo">Decimal</option>
+                    <option asp-for="ConvertTo">Hexadecimal</option>
+                </select>
+            </div>
+        </form>
+
+        <br />
+
+        <form asp-page-handler="convert" method="post" class="card p-3" style="background-color:#f6f6f8">
+
+            <input asp-for="NewConverter.ValueToConvert" class="card-body p-25" style="text-align: right" />
+            <div class="row">
+                <div asp-validation-summary="All" class="text-danger" style="text-align:right"></div>
+            </div>
+            <input type="text" class="card-body p-25" style="text-align: right" value="@Model.ReturnVal" />
+            <br />
+            <div>
+                <button class="btn btn-secondary">CONVERT</button>
+            </div>
+            <br />
+        </form>
+    </div>
 </div>
