@@ -8,12 +8,13 @@
       <File FileName="Binary_to_Decimal_Converter/Models/Converter.cs" Line="185" Column="33" />
       <File FileName="Binary_to_Decimal_Converter/Services/ConverterService.cs" Line="88" Column="1" />
       <File FileName="Binary_to_Decimal_Converter/wwwroot/css/site.css" Line="1" Column="1" />
+      <File FileName="Binary_to_Decimal_Converter/wwwroot/.well-known/acme-challenge/HNgIogezcmMOlYBSLYskNANxbZ9utARd_v3YWpafMY0.txt" Line="1" Column="88" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Binary_to_Decimal_Converter" expanded="True">
-            <Node name="Binary_to_Decimal_Converter" expanded="True" selected="True">
+            <Node name="Binary_to_Decimal_Converter" expanded="True">
               <Node name="Models" expanded="True" />
               <Node name="Pages" expanded="True">
                 <Node name="Shared" expanded="True" />
@@ -21,7 +22,11 @@
               </Node>
               <Node name="Services" expanded="True" />
               <Node name="wwwroot" expanded="True">
-                <Node name="css" expanded="True" />
+                <Node name=".well-known" expanded="True">
+                  <Node name="acme-challenge" expanded="True">
+                    <Node name="HNgIogezcmMOlYBSLYskNANxbZ9utARd_v3YWpafMY0.txt" selected="True" />
+                  </Node>
+                </Node>
               </Node>
             </Node>
           </Node>

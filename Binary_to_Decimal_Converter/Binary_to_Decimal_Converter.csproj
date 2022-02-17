@@ -9,4 +9,11 @@
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.22" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\.well-known\" />
+    <Folder Include="wwwroot\.well-known\acme-challenge\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="wwwroot\.well-known\acme-challenge\HNgIogezcmMOlYBSLYskNANxbZ9utARd_v3YWpafMY0.txt" />
+  </ItemGroup>
 </Project>
