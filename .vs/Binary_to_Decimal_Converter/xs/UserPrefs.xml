@@ -1,6 +1,6 @@
 ﻿<Properties StartupConfiguration="{9B4C3480-633D-4ABF-97C6-88DA726985A9}|Default">
   <MonoDevelop.Ide.ItemProperties.Binary__to__Decimal__Converter PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="Binary_to_Decimal_Converter/wwwroot/test.txt">
     <Files>
       <File FileName="Binary_to_Decimal_Converter/Pages/Index.cshtml" Line="59" Column="49" />
       <File FileName="Binary_to_Decimal_Converter/Pages/Shared/_Layout.cshtml" Line="10" Column="46" />
@@ -8,7 +8,8 @@
       <File FileName="Binary_to_Decimal_Converter/Models/Converter.cs" Line="185" Column="33" />
       <File FileName="Binary_to_Decimal_Converter/Services/ConverterService.cs" Line="88" Column="1" />
       <File FileName="Binary_to_Decimal_Converter/wwwroot/css/site.css" Line="1" Column="1" />
-      <File FileName="Binary_to_Decimal_Converter/wwwroot/.well-known/acme-challenge/HNgIogezcmMOlYBSLYskNANxbZ9utARd_v3YWpafMY0.txt" Line="1" Column="88" />
+      <File FileName="Binary_to_Decimal_Converter/wwwroot/.well-known/acme-challenge/HNgIogezcmMOlYBSLYskNANxbZ9utARd_v3YWpafMY0.txt" Line="1" Column="1" />
+      <File FileName="Binary_to_Decimal_Converter/wwwroot/test.txt" Line="1" Column="5" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -22,11 +23,8 @@
               </Node>
               <Node name="Services" expanded="True" />
               <Node name="wwwroot" expanded="True">
-                <Node name=".well-known" expanded="True">
-                  <Node name="acme-challenge" expanded="True">
-                    <Node name="HNgIogezcmMOlYBSLYskNANxbZ9utARd_v3YWpafMY0.txt" selected="True" />
-                  </Node>
-                </Node>
+                <Node name=".well-known" expanded="True" />
+                <Node name="test.txt" selected="True" />
               </Node>
             </Node>
           </Node>
