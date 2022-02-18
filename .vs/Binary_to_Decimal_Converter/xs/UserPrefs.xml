@@ -1,14 +1,14 @@
 ﻿<Properties StartupConfiguration="{9B4C3480-633D-4ABF-97C6-88DA726985A9}|Default">
   <MonoDevelop.Ide.ItemProperties.Binary__to__Decimal__Converter PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Binary_to_Decimal_Converter/wwwroot/test.txt">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Binary_to_Decimal_Converter/wwwroot/css/site.css">
     <Files>
       <File FileName="Binary_to_Decimal_Converter/Pages/Index.cshtml" Line="59" Column="49" />
-      <File FileName="Binary_to_Decimal_Converter/Pages/Shared/_Layout.cshtml" Line="10" Column="46" />
-      <File FileName="Binary_to_Decimal_Converter/Pages/Index.cshtml.cs" Line="24" Column="79" />
-      <File FileName="Binary_to_Decimal_Converter/Models/Converter.cs" Line="185" Column="33" />
-      <File FileName="Binary_to_Decimal_Converter/Services/ConverterService.cs" Line="88" Column="1" />
+      <File FileName="Binary_to_Decimal_Converter/Pages/Shared/_Layout.cshtml" />
+      <File FileName="Binary_to_Decimal_Converter/Pages/Index.cshtml.cs" />
+      <File FileName="Binary_to_Decimal_Converter/Models/Converter.cs" />
+      <File FileName="Binary_to_Decimal_Converter/Services/ConverterService.cs" />
       <File FileName="Binary_to_Decimal_Converter/wwwroot/css/site.css" Line="1" Column="1" />
-      <File FileName="Binary_to_Decimal_Converter/wwwroot/test.txt" Line="1" Column="88" />
+      <File FileName="Binary_to_Decimal_Converter/wwwroot/js/site.js" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -16,14 +16,10 @@
           <Node name="Binary_to_Decimal_Converter" expanded="True">
             <Node name="Binary_to_Decimal_Converter" expanded="True">
               <Node name="Models" expanded="True" />
-              <Node name="Pages" expanded="True">
-                <Node name="Shared" expanded="True" />
-                <Node name="Index.cshtml" expanded="True" />
-              </Node>
+              <Node name="Pages" expanded="True" />
               <Node name="Services" expanded="True" />
-              <Node name="wwwroot" expanded="True">
-                <Node name="test.txt" selected="True" />
-              </Node>
+              <Node name="wwwroot" expanded="True" />
+              <Node name="appsettings.json" expanded="True" />
             </Node>
           </Node>
         </State>
