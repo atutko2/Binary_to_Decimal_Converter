@@ -14,6 +14,9 @@
     <Folder Include="wwwroot\.well-known\acme-challenge\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="wwwroot\.well-known\acme-challenge\HNgIogezcmMOlYBSLYskNANxbZ9utARd_v3YWpafMY0.txt" />
+    <Content Include="wwwroot\.well-known\acme-challenge\test.txt">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
   </ItemGroup>
 </Project>
